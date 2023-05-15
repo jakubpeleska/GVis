@@ -1,33 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import FileInput from './components/file-input'
+import DataVisualization from './components/map'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const topic = `Vizualizátor GeoJSON - GVis
+    Bude se jednat o sigle page aplikaci, která bude zprostředkovávat vizualizaci souborů ve formátu GeoJSON.
+    Stránka bude mít dvě hlavní části - mapu s vizualizací a sidebar s různými akcemi.
+    Nahrávaní GeoJSON souborů bude možné přímo z lokálního zařízení nebo pomocí URL.
+    Soubory bude možné editovat, specifikovat jejich projekci a upravovat parametry vizualizace. `
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Topic</h1>
+      <p>{topic}</p>
+      <FileInput />
+      <DataVisualization />
     </>
   )
 }
