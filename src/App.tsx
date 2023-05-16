@@ -1,21 +1,28 @@
 import './App.css'
-import FileInput from './components/file-input'
-import DataVisualization from './components/map'
+
+import { useState } from 'react'
+
+import { Header, Footer, GeoJSONVisualization, TabMenu } from './components'
+import GeoDataInput from './components/geo-data-input'
+
 
 function App() {
-  const topic = `Vizualizátor GeoJSON - GVis
-    Bude se jednat o sigle page aplikaci, která bude zprostředkovávat vizualizaci souborů ve formátu GeoJSON.
-    Stránka bude mít dvě hlavní části - mapu s vizualizací a sidebar s různými akcemi.
-    Nahrávaní GeoJSON souborů bude možné přímo z lokálního zařízení nebo pomocí URL.
-    Soubory bude možné editovat, specifikovat jejich projekci a upravovat parametry vizualizace. `
 
+  const [geoData, setGeoData] = useState<string | undefined>(undefined)
 
   return (
     <>
-      <h1>Topic</h1>
-      <p>{topic}</p>
-      <FileInput />
-      <DataVisualization />
+      <Header />
+      <main>
+        <div id='content'>
+          <div id='visualization'>
+            <TabMenu onOpen={(type) => alert(type)} />
+            <GeoJSONVisualization data={geoData} />
+          </div>
+        </div>
+      </main>
+      <GeoDataInput setGeoData={setGeoData} />
+      <Footer />
     </>
   )
 }

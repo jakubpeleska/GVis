@@ -1,0 +1,49 @@
+#tab-menu {
+  position: relative;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  background-color: var(--color-button);
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  max-width: fit-content;
+
+  z-index: 100;
+}
+
+.menu li {
+  position: relative;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.menu li:hover {
+  background-color: var(--color-button-hover);
+}
+
+.submenu {
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: max-content;
+  min-width: 100%;
+}
+
+.submenu li {
+  cursor: pointer;
+  background-color: var(--color-button);
+}
+
+.submenu li:hover {
+  background-color: var(--color-button-hover);
+}
+
+.menu li:hover .submenu {
+  visibility: inherit;
+}

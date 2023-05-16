@@ -1,11 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 
-interface TitleProps {
+interface GeoDataInputProps {
+  setGeoData: (data: any) => void
   title?: string;
   placeholder?: string;
 }
 
-const FileInput: FC<TitleProps> = ({ title, placeholder = 'Select file fromm your device...' }) => {
+const GeoDataInput: FC<GeoDataInputProps> = ({ setGeoData, title, placeholder = 'Select file fromm your device...' }) => {
 
   const [filename, setFilename] = useState<string>("")
 
@@ -17,9 +18,14 @@ const FileInput: FC<TitleProps> = ({ title, placeholder = 'Select file fromm you
           type='file'
           id='geo-data-input'
           title={title}
-          onChange={(e) => {
-            console.log(e)
+          onChange={async (e) => {
+            if (!e.target.files) return
             setFilename(e.target.value)
+
+
+            const data = await e.target.files[0].text()
+            console.log(data)
+            setGeoData(data)
           }}
           value={filename}
           placeholder={placeholder}
@@ -29,4 +35,4 @@ const FileInput: FC<TitleProps> = ({ title, placeholder = 'Select file fromm you
   );
 };
 
-export default FileInput;
+export default GeoDataInput;
