@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 import { GeoJson, Map, Point } from 'pigeon-maps';
-import { osm, stamenToner, stamenTerrain } from 'pigeon-maps/providers'
+import { stamenTerrain } from 'pigeon-maps/providers'
 
 interface GeoJSONVisualizationProps {
   data?: string
@@ -18,7 +18,7 @@ const GeoJSONVisualization: FC<GeoJSONVisualizationProps> = ({ data }) => {
       <Map defaultCenter={position} defaultZoom={16} provider={stamenTerrain} minZoom={3} metaWheelZoom={true}>
         <GeoJson
           data={parsedData}
-          styleCallback={(feature: unknown, hover: boolean) =>
+          styleCallback={(_feature: unknown, hover: boolean) =>
             hover
               ? { fill: '#93c0d099', strokeWidth: '2' }
               : { fill: '#d4e6ec99', strokeWidth: '1' }

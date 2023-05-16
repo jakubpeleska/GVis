@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from 'react';
+import { FC, useState } from 'react';
 
 interface GeoDataInputProps {
   setGeoData: (data: any) => void
