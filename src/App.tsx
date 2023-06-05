@@ -6,8 +6,7 @@ import { parse as parseWKT } from 'wkt'
 
 import { GeoJSON, Geometry } from 'geojson'
 
-import { Header, Footer, GeoJSONVisualization, TabMenu } from './components'
-import Sidepanel from './components/sidepanel/sidepanel'
+import { Header, Footer, GeoJSONVisualization, TabMenu, Sidepanel } from './components'
 
 
 function App() {
@@ -70,7 +69,7 @@ function App() {
             transition: 'width 0.5s'
           }}
         >
-          <button onClick={() => setSidepanelOption('none')} value=''>Close</button>
+          <button onClick={() => setSidepanelOption('none')} style={{ display: sidepanelVisible ? '' : 'none' }}>Close</button>
           <Sidepanel option={sidepanelOption} />
         </section>
       </main >
