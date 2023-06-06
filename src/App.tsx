@@ -18,7 +18,7 @@ function App() {
     type: "FeatureCollection",
     features: [],
   });
-  const [visualization, setVisualization] = useState({
+  const [visualization, _setVisualization] = useState({
     style: { fill: "#93c0d099", strokeWidth: 2, stroke: "white" },
     hoverStyle: { fill: "#d4e6ec99", strokeWidth: 1, stroke: "white" },
     useHoverStyle: true,
