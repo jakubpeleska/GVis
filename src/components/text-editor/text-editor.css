@@ -1,0 +1,15 @@
+#edit-text {
+  margin: 20px;
+  height: 100%;
+}
+
+#edit-text-error {
+  margin: 10px 20px 0px 20px;
+  color: red;
+}
+
+.save-button {
+  padding: 10px;
+  margin: 0px 20px 10px 20px;
+  width: fit-content;
+}

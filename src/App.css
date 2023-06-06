@@ -1,4 +1,6 @@
 #main-content {
+  position: relative;
+
   display: flex;
   flex-direction: row;
   min-width: 320px;
@@ -6,28 +8,26 @@
 
   border-top: 1px solid var(--color-font);
   border-bottom: 1px solid var(--color-font);
+
+  overflow: hidden;
+}
+
+#tab-menu {
+  position: relative;
 }
 
 #visualization {
-  width: 100%;
+  flex-grow: 1;
 }
 
 #sidepanel {
-  width: 80%;
-  background-color: yellow;
+  min-width: fit-content;
+  min-height: fit-content;
 }
 
 @media only screen and (max-width: 700px) {
   #main-content {
     flex-direction: column;
-  }
-
-  #visualization {
-    height: 500px;
-  }
-
-  #sidepanel {
-    width: 100%;
     height: 500px;
   }
 }

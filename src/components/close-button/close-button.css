@@ -1,0 +1,9 @@
+.close-button {
+  cursor: pointer;
+  padding: 10px;
+  background-color: var(--color-button);
+}
+
+.close-button:hover {
+  background-color: var(--color-button-hover);
+}

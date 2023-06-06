@@ -1,22 +1,17 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-import "./footer.css"
+import "./footer.css";
 
 const Footer: FC = () => {
-
-  const copyright = '©Jakub Peleška 2023'
-
-  const topic = `Vizualizátor GeoJSON - GVis
-    Bude se jednat o sigle page aplikaci, která bude zprostředkovávat vizualizaci souborů ve formátu GeoJSON.
-    Stránka bude mít dvě hlavní části - mapu s vizualizací a sidebar s různými akcemi.
-    Nahrávaní GeoJSON souborů bude možné přímo z lokálního zařízení nebo pomocí URL.
-    Soubory bude možné editovat, specifikovat jejich projekci a upravovat parametry vizualizace.`
+  const copyright = "©Jakub Peleška 2023";
 
   return (
     <>
-      <footer id='footer'>
+      <footer id="footer">
         <p>{copyright}</p>
-        <p>{topic}</p>
+        <a href="https://github.com/jakubpeleska/GVis" target="_blank">
+          Source Code
+        </a>
       </footer>
     </>
   );

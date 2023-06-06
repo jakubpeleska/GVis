@@ -1,5 +1,9 @@
-export { default as Header } from "./header/header"
-export { default as Footer } from "./footer/footer"
-export { default as GeoJSONVisualization } from "./visualization/visualization"
-export { default as Sidepanel } from "./sidepanel/sidepanel"
-export { default as TabMenu } from "./tab-menu/tab-menu"
+export { default as Button } from "./button/button";
+export { default as CloseButton } from "./close-button/close-button";
+export { default as ColorPicker } from "./color-picker/color-picker";
+export { default as Header } from "./header/header";
+export { default as Footer } from "./footer/footer";
+export { default as GeoJSONVisualization } from "./visualization/visualization";
+export { default as Sidepanel } from "./sidepanel/sidepanel";
+export { default as TabMenu } from "./tab-menu/tab-menu";
+export { default as TextEditor } from "./text-editor/text-editor";
