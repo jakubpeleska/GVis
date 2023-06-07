@@ -6,18 +6,18 @@ import { Button } from "..";
 import "./text-editor.css";
 
 interface Props {
-  geoData: GeoJSON;
+  data: GeoJSON;
   saveEditedData: (data: string) => void;
 }
 
-const TextEditor: FC<Props> = ({ geoData, saveEditedData }) => {
+const TextEditor: FC<Props> = ({ data, saveEditedData }) => {
   const [editData, setEditedData] = useState<string>();
   const [editError, setEditError] = useState<string>();
 
   useEffect(() => {
-    setEditedData(geoData ? JSON.stringify(geoData, null, 2) : undefined);
+    setEditedData(data ? JSON.stringify(data, null, 2) : undefined);
     setEditError("");
-  }, [geoData]);
+  }, [data]);
 
   const editedDataValid = !editError && !!editData;
 

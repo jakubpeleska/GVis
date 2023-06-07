@@ -12,16 +12,17 @@ import {
 } from "./components";
 
 import "./App.css";
+import { GeoDataStyleSettings } from "types";
 
 function App() {
   const [geoData, setGeoData] = useState<GeoJSON>({
     type: "FeatureCollection",
     features: [],
   });
-  const [visualization, _setVisualization] = useState({
+  const [dataStyles, setDataStyles] = useState<GeoDataStyleSettings>({
     style: { fill: "#93c0d099", strokeWidth: 2, stroke: "white" },
     hoverStyle: { fill: "#d4e6ec99", strokeWidth: 1, stroke: "white" },
-    useHoverStyle: true,
+    toggle: { useHoverStyle: true },
   });
 
   const [sidepanelOption, setSidepanelOption] = useState(
@@ -69,6 +70,19 @@ function App() {
     a.click();
   };
 
+  const saveDataStyles = <K extends keyof GeoDataStyleSettings>(
+    key: K,
+    value: Partial<GeoDataStyleSettings[K]>
+  ) => {
+    setDataStyles({
+      ...dataStyles,
+      [key]: {
+        ...dataStyles[key],
+        ...value,
+      },
+    });
+  };
+
   return (
     <>
       <Header />
@@ -84,16 +98,18 @@ function App() {
         <section id="visualization">
           <GeoJSONVisualization
             data={geoData}
-            visualization={visualization}
-            onOpen={(type, data) => updateGeoData(type, data)}
+            dataStyles={dataStyles}
+            onOpen={updateGeoData}
           />
         </section>
         <section id="sidepanel">
           <Sidepanel
             option={sidepanelOption}
             onClose={() => setSidepanelOption("none")}
-            geoData={geoData}
+            data={geoData}
+            dataStyles={dataStyles}
             saveEditedData={(editedData) => setGeoData(JSON.parse(editedData))}
+            saveDataStyles={saveDataStyles}
           />
         </section>
       </main>

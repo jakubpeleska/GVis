@@ -9,6 +9,8 @@
   max-width: 500px;
   height: 100%;
   right: -40vw;
+
+  overflow: scroll;
 }
 
 #sidepanel-wrapper.open {
@@ -39,4 +41,12 @@
 
   display: flex;
   flex-direction: column;
+}
+
+.toggle-switch {
+  width: 20px;
+  height: 20px;
+
+  background-color: var(--color-button);
+  accent-color: var(--color-button-hover);
 }

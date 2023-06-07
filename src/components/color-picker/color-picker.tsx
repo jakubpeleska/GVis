@@ -4,8 +4,19 @@ import { ChromePicker, RGBColor } from "react-color";
 import "./color-picker.css";
 
 interface Props {
-  color: RGBColor;
-  onPickColor: (color: RGBColor) => void;
+  color: string;
+  onPickColor: (color: string) => void;
+}
+
+function num2hex(n: number): string {
+  return n.toString(16).padStart(2, "0");
+}
+
+function rgba2hex(color: RGBColor): string {
+  const { r, g, b, a = 1 } = color;
+  return `#${num2hex(r)}${num2hex(g)}${num2hex(b)}${num2hex(
+    Math.floor(a * 255)
+  )}`;
 }
 
 const ColorPicker: FC<Props> = ({ color, onPickColor }) => {
@@ -20,7 +31,7 @@ const ColorPicker: FC<Props> = ({ color, onPickColor }) => {
         <div
           className="color-display"
           style={{
-            background: `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`,
+            background: color,
           }}
         />
         {colorPickerOpen ? (
@@ -35,7 +46,7 @@ const ColorPicker: FC<Props> = ({ color, onPickColor }) => {
             />
             <ChromePicker
               color={color}
-              onChange={(color) => onPickColor(color.rgb)}
+              onChange={(color) => onPickColor(rgba2hex(color.rgb))}
             />
           </div>
         ) : null}

@@ -6,17 +6,15 @@ import { GeoJSON } from "geojson";
 import { GeoJson, Map, Point, ZoomControl } from "pigeon-maps";
 import { stamenTerrain } from "pigeon-maps/providers";
 
+import { GeoDataStyleSettings } from "types";
+
 interface Props {
   data: GeoJSON;
   onOpen: (filetype: "wkt" | "geojson", data: string) => void;
-  visualization: {
-    style: { fill: string; stroke: string; strokeWidth: number };
-    hoverStyle: { fill: string; stroke: string; strokeWidth: number };
-    useHoverStyle: boolean;
-  };
+  dataStyles: GeoDataStyleSettings;
 }
 
-const GeoJSONVisualization: FC<Props> = ({ data, onOpen, visualization }) => {
+const GeoJSONVisualization: FC<Props> = ({ data, onOpen, dataStyles }) => {
   const dropZone = useRef<HTMLDivElement>(null);
   const [dragActive, updateDrag] = useState(false);
 
@@ -85,10 +83,10 @@ const GeoJSONVisualization: FC<Props> = ({ data, onOpen, visualization }) => {
         <GeoJson
           data={data}
           styleCallback={(_: unknown, hover: boolean) => {
-            if (visualization.useHoverStyle) {
-              return hover ? visualization.hoverStyle : visualization.style;
+            if (dataStyles.toggle.useHoverStyle) {
+              return hover ? dataStyles.hoverStyle : dataStyles.style;
             }
-            return visualization.style;
+            return dataStyles.style;
           }}
         />
       </Map>

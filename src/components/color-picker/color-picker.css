@@ -10,14 +10,15 @@
 }
 
 .color-display {
-  width: 36px;
-  height: 14px;
+  width: 72px;
+  height: 25px;
   border-radius: 2px;
 }
 
 .color-picker-wrapper {
   position: absolute;
   z-index: 200;
+  right: 50px;
 }
 
 .color-picker-closer {
