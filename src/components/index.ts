@@ -5,6 +5,7 @@ export { default as Header } from "./header/header";
 export { default as Footer } from "./footer/footer";
 export { default as NumberPicker } from "./number-picker/number-picker";
 export { default as Sidepanel } from "./sidepanel/sidepanel";
+export { default as StyleEditor } from "./style-editor/style-editor";
 export { default as TabMenu } from "./tab-menu/tab-menu";
 export { default as TextEditor } from "./text-editor/text-editor";
 export { default as GeoJSONVisualization } from "./visualization/visualization";

@@ -19,6 +19,7 @@ const TextEditor: FC<Props> = ({ data, saveEditedData }) => {
     setEditError("");
   }, [data]);
 
+  // allow saving data only if there was no parsing error
   const editedDataValid = !editError && !!editData;
 
   return (
@@ -34,6 +35,7 @@ const TextEditor: FC<Props> = ({ data, saveEditedData }) => {
         autoFocus
         onChange={(e) => {
           const newText = e.target.value;
+          // try parse string to JSON to check for errors
           try {
             JSON.parse(newText);
             setEditError("");

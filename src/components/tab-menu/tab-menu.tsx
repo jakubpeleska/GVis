@@ -20,7 +20,9 @@ const TabMenu: FC<Props> = ({ onOpen, onSave, onEdit, onStyle }) => {
           <input
             type="file"
             id="geo-data-selection"
+            // set allowed file extension
             accept={fileType === "geojson" ? ".json,.geojson" : ".wkt"}
+            // hidden file input that is triggered via htmlFor in label bellow
             style={{ display: "none" }}
             onChange={async (e) => {
               if (!e.target.files) return;

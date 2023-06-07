@@ -22,20 +22,24 @@ const GeoJSONVisualization: FC<Props> = ({ data, onOpen, dataStyles }) => {
   const [zoom, setZoom] = useState(13);
 
   return (
+    // wrapper around map that is used as drop zone for files
     <div
       id="wrapper"
       ref={!dragActive ? dropZone : null}
       onDrop={async (e) => {
         e.preventDefault();
 
+        // disable drag overlay
         updateDrag(false);
 
         const file = e.dataTransfer.files.item(0);
 
         if (!file) return;
 
+        // get file extension
         const extension = file.name.split(".").at(-1);
 
+        // load data if extension is valid
         if (extension === "wkt") {
           onOpen("wkt", await file.text());
         } else if (extension === "geojson" || extension === "json") {
@@ -82,6 +86,7 @@ const GeoJSONVisualization: FC<Props> = ({ data, onOpen, dataStyles }) => {
         <ZoomControl style={{ top: "90%", zIndex: 1 }} />
         <GeoJson
           data={data}
+          // apply user selected style
           styleCallback={(_: unknown, hover: boolean) => {
             if (dataStyles.toggle.useHoverStyle) {
               return hover ? dataStyles.hoverStyle : dataStyles.style;
