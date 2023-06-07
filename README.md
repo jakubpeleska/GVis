@@ -17,6 +17,7 @@
 ### Quick Start
 - You will Node.js and npm to run the app. If you need help with setup take a look [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 - I also recommend using [nmv](https://github.com/nvm-sh/nvm) for managing the Node.JS versions.
+- Example data are [here](./example-data/prague-districts.geojson)
 
 #### Install Commands
 - `nvm use`
