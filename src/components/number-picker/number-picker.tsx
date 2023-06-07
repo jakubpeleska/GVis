@@ -26,6 +26,7 @@ const NumberPicker: FC<Props> = ({
         const newValue = parseInt(e.target.value);
         if (isNaN(newValue)) return;
 
+        // clamp the number to min/max values
         onPickNumber(Math.min(max, Math.max(min, newValue)));
       }}
     />

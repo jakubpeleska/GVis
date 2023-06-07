@@ -9,6 +9,7 @@ interface Props {
 }
 
 function num2hex(n: number): string {
+  // convert number to hexadecimal string with length 2
   return n.toString(16).padStart(2, "0");
 }
 
@@ -37,6 +38,7 @@ const ColorPicker: FC<Props> = ({ color, onPickColor }) => {
         {colorPickerOpen ? (
           <div className="color-picker-wrapper">
             <div
+              // hidden wrapper overlay to close color picker
               className="color-picker-closer"
               onClick={(e) => {
                 e.preventDefault();
@@ -45,7 +47,9 @@ const ColorPicker: FC<Props> = ({ color, onPickColor }) => {
               }}
             />
             <ChromePicker
+              // actual color picker from react-color library
               color={color}
+              // use custom rgba color to hex color as the library doesn't provide hex color with opacity
               onChange={(color) => onPickColor(rgba2hex(color.rgb))}
             />
           </div>

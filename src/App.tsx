@@ -15,10 +15,13 @@ import "./App.css";
 import { GeoDataStyleSettings } from "types";
 
 function App() {
+  // state for geo data with default values
   const [geoData, setGeoData] = useState<GeoJSON>({
     type: "FeatureCollection",
     features: [],
   });
+
+  // state for geo data style with default values
   const [dataStyles, setDataStyles] = useState<GeoDataStyleSettings>({
     style: { fill: "#93c0d099", strokeWidth: 2, stroke: "white" },
     hoverStyle: { fill: "#d4e6ec99", strokeWidth: 1, stroke: "white" },
@@ -33,6 +36,8 @@ function App() {
     let parsedData: GeoJSON;
     if (type === "wkt") {
       parsedData = parseWKT(data);
+
+      // if data were in WKT convert geoJSON to FeatureCollection to standardize data interface
       if (parsedData.type === "GeometryCollection") {
         parsedData = {
           type: "FeatureCollection",
@@ -63,6 +68,7 @@ function App() {
   };
 
   const saveGeoData = () => {
+    // create dummy anchor element to create download link for data
     const a = document.createElement("a");
     const file = new Blob([JSON.stringify(geoData)]);
     a.href = URL.createObjectURL(file);
